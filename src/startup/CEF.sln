@@ -1,0 +1,276 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "CEF\Startup.csproj", "{2D43DBAF-4E59-49F0-9348-650C736654F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7C6A44F4-5B77-4724-A399-9F07EFFEDA7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.Common", "..\product\Common\Microsoft.Azure.EngagementFabric.Common\Microsoft.Azure.EngagementFabric.Common.csproj", "{7483B50A-D491-4A00-99C8-B3F25DB6BA3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.TenantCacheClient", "..\product\Common\Microsoft.Azure.EngagementFabric.TenantCacheClient\Microsoft.Azure.EngagementFabric.TenantCacheClient.csproj", "{4E78733A-ED54-428B-8034-E80F2697A8DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mock", "..\product\Common\Mock\Mock.csproj", "{A968D46C-29F5-401F-97F5-83A38F888DBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface", "Interface", "{5177E188-55EF-46ED-967C-C9809091D720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.ProviderInterface", "..\product\Interface\Microsoft.Azure.EngagementFabric.ProviderInterface\Microsoft.Azure.EngagementFabric.ProviderInterface.csproj", "{FCAEEE99-6221-4C23-984C-6BE4586BA735}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.TenantCache", "..\product\Interface\Microsoft.Azure.EngagementFabric.TenantCache\Microsoft.Azure.EngagementFabric.TenantCache.csproj", "{11043A55-A907-4348-9101-EB8D1CCE806A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Connector", "Connector", "{711CB374-C5A3-4FEB-8CBD-013503709F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.PaymentConnector", "..\product\Interface\Connector\Microsoft.Azure.EngagementFabric.PaymentConnector\Microsoft.Azure.EngagementFabric.PaymentConnector.csproj", "{85754F77-6189-4F1B-9636-EC408C0D1736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.SocialConnector", "..\product\Interface\Connector\Microsoft.Azure.EngagementFabric.SocialConnector\Microsoft.Azure.EngagementFabric.SocialConnector.csproj", "{AD93814C-57CA-4271-896A-92457DC5D4AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.DispatcherInterface", "..\product\Interface\Microsoft.Azure.EngagementFabric.DispatcherInterface\Microsoft.Azure.EngagementFabric.DispatcherInterface.csproj", "{B6501E63-9808-49CE-A93B-CB4465642916}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceProvider", "ServiceProvider", "{BDB0EEF9-2C9D-4279-B9EF-0E11F9168CE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sms", "Sms", "{74E7FC12-9636-45ED-8332-73430E9943AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.Sms.Common", "..\product\ServiceProvider\Sms\Microsoft.Azure.EngagementFabric.Sms.Common\Microsoft.Azure.EngagementFabric.Sms.Common.csproj", "{667FFA26-B110-412E-B8DB-033C6027504C}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.SmsApp", "..\product\ServiceProvider\Sms\Microsoft.Azure.EngagementFabric.SmsApp\Microsoft.Azure.EngagementFabric.SmsApp.sfproj", "{152B4EC7-1F81-418B-8F4D-FBA67D90322D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.SmsProvider", "..\product\ServiceProvider\Sms\Microsoft.Azure.EngagementFabric.SmsProvider\Microsoft.Azure.EngagementFabric.SmsProvider.csproj", "{EBA5BB54-74F1-4E7C-81F2-1AD1D6563349}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Billing", "Billing", "{A60A11FC-D436-4B4F-BA2E-48010EB59C16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{AF022573-22DB-4F0A-A334-B212923DE39A}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.GatewayApp", "..\product\Gateway\Microsoft.Azure.EngagementFabric.GatewayApp\Microsoft.Azure.EngagementFabric.GatewayApp.sfproj", "{AD9739BA-7507-4267-ABAD-1B74F06EFFC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.RequestListener", "..\product\Gateway\Microsoft.Azure.EngagementFabric.RequestListener\Microsoft.Azure.EngagementFabric.RequestListener.csproj", "{863ACE7D-9E8D-4770-AB9B-B1207EF86EFB}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.BillingApp", "..\product\Billing\Microsoft.Azure.EngagementFabric.BillingApp\Microsoft.Azure.EngagementFabric.BillingApp.sfproj", "{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.BillingService", "..\product\Billing\Microsoft.Azure.EngagementFabric.BillingService\Microsoft.Azure.EngagementFabric.BillingService.csproj", "{469E51BB-F07C-4263-8A7C-16EE0490ED64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.Billing.Common", "..\product\Billing\Microsoft.Azure.EngagementFabric.Billing.Common\Microsoft.Azure.EngagementFabric.Billing.Common.csproj", "{7B209167-0B15-41D8-A2C2-D3A508C044A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.MessageDispatcher", "..\product\ServiceProvider\Sms\Microsoft.Azure.EngagementFabric.MessageDispatcher\Microsoft.Azure.EngagementFabric.MessageDispatcher.csproj", "{9249F139-E803-4F43-BCA7-E7B645E166EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Email", "Email", "{9A7B5909-EB9E-466A-8811-A4BE6293C6A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.Email.Common", "..\product\ServiceProvider\Email\Microsoft.Azure.EngagementFabric.Email.Common\Microsoft.Azure.EngagementFabric.Email.Common.csproj", "{878FFA24-8C8C-42C3-954A-1B7DF98A06A0}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.EmailApp", "..\product\ServiceProvider\Email\Microsoft.Azure.EngagementFabric.EmailApp\Microsoft.Azure.EngagementFabric.EmailApp.sfproj", "{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.EmailProvider", "..\product\ServiceProvider\Email\Microsoft.Azure.EngagementFabric.EmailProvider\Microsoft.Azure.EngagementFabric.EmailProvider.csproj", "{5C7E5725-BDA1-4090-A949-9BA4E77ADA4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Otp", "Otp", "{755C71A7-ACC3-4A95-A009-557B15D1ED31}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.OtpApp", "..\product\ServiceProvider\Otp\Microsoft.Azure.EngagementFabric.OtpApp\Microsoft.Azure.EngagementFabric.OtpApp.sfproj", "{4907B476-1D6E-481E-9BF2-8386A466FAC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.OtpProvider", "..\product\ServiceProvider\Otp\Microsoft.Azure.EngagementFabric.OtpProvider\Microsoft.Azure.EngagementFabric.OtpProvider.csproj", "{8BBFF717-4934-4E73-8D8D-D601925C4A1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Social", "Social", "{7E44A1DF-9353-4E61-B1A6-0375883A0CD6}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.SocialApp", "..\product\ServiceProvider\Social\Microsoft.Azure.EngagementFabric.SocialApp\Microsoft.Azure.EngagementFabric.SocialApp.sfproj", "{A7AAF011-25E8-4EF2-919B-CD270398DDC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.SocialProvider", "..\product\ServiceProvider\Social\Microsoft.Azure.EngagementFabric.SocialProvider\Microsoft.Azure.EngagementFabric.SocialProvider.csproj", "{D93A8CBF-CB9D-4C53-B0DE-9FBF8C26473F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TenantManagement", "TenantManagement", "{4B167BEA-3F57-4B59-AD3B-DD53CF9966B4}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.TenantManagementApp", "..\product\TenantManagement\Microsoft.Azure.EngagementFabric.TenantManagementApp\Microsoft.Azure.EngagementFabric.TenantManagementApp.sfproj", "{25F2554F-C3F4-4444-B788-D9E41AFBA922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.TenantCacheService", "..\product\TenantManagement\Microsoft.Azure.EngagementFabric.TenantCacheService\Microsoft.Azure.EngagementFabric.TenantCacheService.csproj", "{C11C8298-922C-4CE0-824B-80976550E279}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0246FA5D-50A2-4DEE-BF63-B38B517FBB25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.AdminClient", "..\product\Client\Microsoft.Azure.EngagementFabric.AdminClient\Microsoft.Azure.EngagementFabric.AdminClient.csproj", "{3C55B4A9-6A56-424A-BBF5-9E28E9410967}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResourceProvider", "ResourceProvider", "{871CD229-771B-4BCA-A565-01C9CF3DB90C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.ResourceProviderDocumentation", "..\product\ResourceProvider\Microsoft.Azure.EngagementFabric.ResourceProviderDocumentation\Microsoft.Azure.EngagementFabric.ResourceProviderDocumentation.csproj", "{77922751-A39C-45FA-9096-0FFC3560CC15}"
+EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Microsoft.Azure.EngagementFabric.ResourceProviderApp", "..\product\ResourceProvider\Microsoft.Azure.EngagementFabric.ResourceProviderApp\Microsoft.Azure.EngagementFabric.ResourceProviderApp.sfproj", "{57294167-F244-4BE8-8FD2-68FCE8ECF13C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EngagementFabric.ResourceProviderWebService", "..\product\ResourceProvider\Microsoft.Azure.EngagementFabric.ResourceProviderWebService\Microsoft.Azure.EngagementFabric.ResourceProviderWebService.csproj", "{D1084114-A21E-464A-816A-FA50A27681A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D43DBAF-4E59-49F0-9348-650C736654F6}.Debug|x64.ActiveCfg = Debug|x64
+		{2D43DBAF-4E59-49F0-9348-650C736654F6}.Debug|x64.Build.0 = Debug|x64
+		{2D43DBAF-4E59-49F0-9348-650C736654F6}.Release|x64.ActiveCfg = Release|x64
+		{2D43DBAF-4E59-49F0-9348-650C736654F6}.Release|x64.Build.0 = Release|x64
+		{7483B50A-D491-4A00-99C8-B3F25DB6BA3C}.Debug|x64.ActiveCfg = Debug|x64
+		{7483B50A-D491-4A00-99C8-B3F25DB6BA3C}.Debug|x64.Build.0 = Debug|x64
+		{7483B50A-D491-4A00-99C8-B3F25DB6BA3C}.Release|x64.ActiveCfg = Release|x64
+		{7483B50A-D491-4A00-99C8-B3F25DB6BA3C}.Release|x64.Build.0 = Release|x64
+		{4E78733A-ED54-428B-8034-E80F2697A8DD}.Debug|x64.ActiveCfg = Debug|x64
+		{4E78733A-ED54-428B-8034-E80F2697A8DD}.Debug|x64.Build.0 = Debug|x64
+		{4E78733A-ED54-428B-8034-E80F2697A8DD}.Release|x64.ActiveCfg = Release|x64
+		{4E78733A-ED54-428B-8034-E80F2697A8DD}.Release|x64.Build.0 = Release|x64
+		{A968D46C-29F5-401F-97F5-83A38F888DBA}.Debug|x64.ActiveCfg = Debug|x64
+		{A968D46C-29F5-401F-97F5-83A38F888DBA}.Debug|x64.Build.0 = Debug|x64
+		{A968D46C-29F5-401F-97F5-83A38F888DBA}.Release|x64.ActiveCfg = Release|x64
+		{A968D46C-29F5-401F-97F5-83A38F888DBA}.Release|x64.Build.0 = Release|x64
+		{FCAEEE99-6221-4C23-984C-6BE4586BA735}.Debug|x64.ActiveCfg = Debug|x64
+		{FCAEEE99-6221-4C23-984C-6BE4586BA735}.Debug|x64.Build.0 = Debug|x64
+		{FCAEEE99-6221-4C23-984C-6BE4586BA735}.Release|x64.ActiveCfg = Release|x64
+		{FCAEEE99-6221-4C23-984C-6BE4586BA735}.Release|x64.Build.0 = Release|x64
+		{11043A55-A907-4348-9101-EB8D1CCE806A}.Debug|x64.ActiveCfg = Debug|x64
+		{11043A55-A907-4348-9101-EB8D1CCE806A}.Debug|x64.Build.0 = Debug|x64
+		{11043A55-A907-4348-9101-EB8D1CCE806A}.Release|x64.ActiveCfg = Release|x64
+		{11043A55-A907-4348-9101-EB8D1CCE806A}.Release|x64.Build.0 = Release|x64
+		{85754F77-6189-4F1B-9636-EC408C0D1736}.Debug|x64.ActiveCfg = Debug|x64
+		{85754F77-6189-4F1B-9636-EC408C0D1736}.Debug|x64.Build.0 = Debug|x64
+		{85754F77-6189-4F1B-9636-EC408C0D1736}.Release|x64.ActiveCfg = Release|x64
+		{85754F77-6189-4F1B-9636-EC408C0D1736}.Release|x64.Build.0 = Release|x64
+		{AD93814C-57CA-4271-896A-92457DC5D4AB}.Debug|x64.ActiveCfg = Debug|x64
+		{AD93814C-57CA-4271-896A-92457DC5D4AB}.Debug|x64.Build.0 = Debug|x64
+		{AD93814C-57CA-4271-896A-92457DC5D4AB}.Release|x64.ActiveCfg = Release|x64
+		{AD93814C-57CA-4271-896A-92457DC5D4AB}.Release|x64.Build.0 = Release|x64
+		{B6501E63-9808-49CE-A93B-CB4465642916}.Debug|x64.ActiveCfg = Debug|x64
+		{B6501E63-9808-49CE-A93B-CB4465642916}.Debug|x64.Build.0 = Debug|x64
+		{B6501E63-9808-49CE-A93B-CB4465642916}.Release|x64.ActiveCfg = Release|x64
+		{B6501E63-9808-49CE-A93B-CB4465642916}.Release|x64.Build.0 = Release|x64
+		{667FFA26-B110-412E-B8DB-033C6027504C}.Debug|x64.ActiveCfg = Debug|x64
+		{667FFA26-B110-412E-B8DB-033C6027504C}.Debug|x64.Build.0 = Debug|x64
+		{667FFA26-B110-412E-B8DB-033C6027504C}.Release|x64.ActiveCfg = Release|x64
+		{667FFA26-B110-412E-B8DB-033C6027504C}.Release|x64.Build.0 = Release|x64
+		{152B4EC7-1F81-418B-8F4D-FBA67D90322D}.Debug|x64.ActiveCfg = Debug|x64
+		{152B4EC7-1F81-418B-8F4D-FBA67D90322D}.Debug|x64.Build.0 = Debug|x64
+		{152B4EC7-1F81-418B-8F4D-FBA67D90322D}.Release|x64.ActiveCfg = Release|x64
+		{152B4EC7-1F81-418B-8F4D-FBA67D90322D}.Release|x64.Build.0 = Release|x64
+		{152B4EC7-1F81-418B-8F4D-FBA67D90322D}.Release|x64.Deploy.0 = Release|x64
+		{EBA5BB54-74F1-4E7C-81F2-1AD1D6563349}.Debug|x64.ActiveCfg = Debug|x64
+		{EBA5BB54-74F1-4E7C-81F2-1AD1D6563349}.Debug|x64.Build.0 = Debug|x64
+		{EBA5BB54-74F1-4E7C-81F2-1AD1D6563349}.Release|x64.ActiveCfg = Release|x64
+		{EBA5BB54-74F1-4E7C-81F2-1AD1D6563349}.Release|x64.Build.0 = Release|x64
+		{AD9739BA-7507-4267-ABAD-1B74F06EFFC2}.Debug|x64.ActiveCfg = Debug|x64
+		{AD9739BA-7507-4267-ABAD-1B74F06EFFC2}.Debug|x64.Build.0 = Debug|x64
+		{AD9739BA-7507-4267-ABAD-1B74F06EFFC2}.Release|x64.ActiveCfg = Release|x64
+		{AD9739BA-7507-4267-ABAD-1B74F06EFFC2}.Release|x64.Build.0 = Release|x64
+		{AD9739BA-7507-4267-ABAD-1B74F06EFFC2}.Release|x64.Deploy.0 = Release|x64
+		{863ACE7D-9E8D-4770-AB9B-B1207EF86EFB}.Debug|x64.ActiveCfg = Debug|x64
+		{863ACE7D-9E8D-4770-AB9B-B1207EF86EFB}.Debug|x64.Build.0 = Debug|x64
+		{863ACE7D-9E8D-4770-AB9B-B1207EF86EFB}.Release|x64.ActiveCfg = Release|x64
+		{863ACE7D-9E8D-4770-AB9B-B1207EF86EFB}.Release|x64.Build.0 = Release|x64
+		{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A}.Debug|x64.ActiveCfg = Debug|x64
+		{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A}.Debug|x64.Build.0 = Debug|x64
+		{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A}.Release|x64.ActiveCfg = Release|x64
+		{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A}.Release|x64.Build.0 = Release|x64
+		{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A}.Release|x64.Deploy.0 = Release|x64
+		{469E51BB-F07C-4263-8A7C-16EE0490ED64}.Debug|x64.ActiveCfg = Debug|x64
+		{469E51BB-F07C-4263-8A7C-16EE0490ED64}.Debug|x64.Build.0 = Debug|x64
+		{469E51BB-F07C-4263-8A7C-16EE0490ED64}.Release|x64.ActiveCfg = Release|x64
+		{469E51BB-F07C-4263-8A7C-16EE0490ED64}.Release|x64.Build.0 = Release|x64
+		{7B209167-0B15-41D8-A2C2-D3A508C044A4}.Debug|x64.ActiveCfg = Debug|x64
+		{7B209167-0B15-41D8-A2C2-D3A508C044A4}.Debug|x64.Build.0 = Debug|x64
+		{7B209167-0B15-41D8-A2C2-D3A508C044A4}.Release|x64.ActiveCfg = Release|x64
+		{7B209167-0B15-41D8-A2C2-D3A508C044A4}.Release|x64.Build.0 = Release|x64
+		{9249F139-E803-4F43-BCA7-E7B645E166EC}.Debug|x64.ActiveCfg = Debug|x64
+		{9249F139-E803-4F43-BCA7-E7B645E166EC}.Debug|x64.Build.0 = Debug|x64
+		{9249F139-E803-4F43-BCA7-E7B645E166EC}.Release|x64.ActiveCfg = Release|x64
+		{9249F139-E803-4F43-BCA7-E7B645E166EC}.Release|x64.Build.0 = Release|x64
+		{878FFA24-8C8C-42C3-954A-1B7DF98A06A0}.Debug|x64.ActiveCfg = Debug|x64
+		{878FFA24-8C8C-42C3-954A-1B7DF98A06A0}.Debug|x64.Build.0 = Debug|x64
+		{878FFA24-8C8C-42C3-954A-1B7DF98A06A0}.Release|x64.ActiveCfg = Release|x64
+		{878FFA24-8C8C-42C3-954A-1B7DF98A06A0}.Release|x64.Build.0 = Release|x64
+		{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5}.Debug|x64.ActiveCfg = Debug|x64
+		{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5}.Debug|x64.Build.0 = Debug|x64
+		{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5}.Release|x64.ActiveCfg = Release|x64
+		{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5}.Release|x64.Build.0 = Release|x64
+		{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5}.Release|x64.Deploy.0 = Release|x64
+		{5C7E5725-BDA1-4090-A949-9BA4E77ADA4B}.Debug|x64.ActiveCfg = Debug|x64
+		{5C7E5725-BDA1-4090-A949-9BA4E77ADA4B}.Debug|x64.Build.0 = Debug|x64
+		{5C7E5725-BDA1-4090-A949-9BA4E77ADA4B}.Release|x64.ActiveCfg = Release|x64
+		{5C7E5725-BDA1-4090-A949-9BA4E77ADA4B}.Release|x64.Build.0 = Release|x64
+		{4907B476-1D6E-481E-9BF2-8386A466FAC4}.Debug|x64.ActiveCfg = Debug|x64
+		{4907B476-1D6E-481E-9BF2-8386A466FAC4}.Debug|x64.Build.0 = Debug|x64
+		{4907B476-1D6E-481E-9BF2-8386A466FAC4}.Release|x64.ActiveCfg = Release|x64
+		{4907B476-1D6E-481E-9BF2-8386A466FAC4}.Release|x64.Build.0 = Release|x64
+		{4907B476-1D6E-481E-9BF2-8386A466FAC4}.Release|x64.Deploy.0 = Release|x64
+		{8BBFF717-4934-4E73-8D8D-D601925C4A1B}.Debug|x64.ActiveCfg = Debug|x64
+		{8BBFF717-4934-4E73-8D8D-D601925C4A1B}.Debug|x64.Build.0 = Debug|x64
+		{8BBFF717-4934-4E73-8D8D-D601925C4A1B}.Release|x64.ActiveCfg = Release|x64
+		{8BBFF717-4934-4E73-8D8D-D601925C4A1B}.Release|x64.Build.0 = Release|x64
+		{A7AAF011-25E8-4EF2-919B-CD270398DDC8}.Debug|x64.ActiveCfg = Debug|x64
+		{A7AAF011-25E8-4EF2-919B-CD270398DDC8}.Debug|x64.Build.0 = Debug|x64
+		{A7AAF011-25E8-4EF2-919B-CD270398DDC8}.Release|x64.ActiveCfg = Release|x64
+		{A7AAF011-25E8-4EF2-919B-CD270398DDC8}.Release|x64.Build.0 = Release|x64
+		{A7AAF011-25E8-4EF2-919B-CD270398DDC8}.Release|x64.Deploy.0 = Release|x64
+		{D93A8CBF-CB9D-4C53-B0DE-9FBF8C26473F}.Debug|x64.ActiveCfg = Debug|x64
+		{D93A8CBF-CB9D-4C53-B0DE-9FBF8C26473F}.Debug|x64.Build.0 = Debug|x64
+		{D93A8CBF-CB9D-4C53-B0DE-9FBF8C26473F}.Release|x64.ActiveCfg = Release|x64
+		{D93A8CBF-CB9D-4C53-B0DE-9FBF8C26473F}.Release|x64.Build.0 = Release|x64
+		{25F2554F-C3F4-4444-B788-D9E41AFBA922}.Debug|x64.ActiveCfg = Debug|x64
+		{25F2554F-C3F4-4444-B788-D9E41AFBA922}.Debug|x64.Build.0 = Debug|x64
+		{25F2554F-C3F4-4444-B788-D9E41AFBA922}.Release|x64.ActiveCfg = Release|x64
+		{25F2554F-C3F4-4444-B788-D9E41AFBA922}.Release|x64.Build.0 = Release|x64
+		{25F2554F-C3F4-4444-B788-D9E41AFBA922}.Release|x64.Deploy.0 = Release|x64
+		{C11C8298-922C-4CE0-824B-80976550E279}.Debug|x64.ActiveCfg = Debug|x64
+		{C11C8298-922C-4CE0-824B-80976550E279}.Debug|x64.Build.0 = Debug|x64
+		{C11C8298-922C-4CE0-824B-80976550E279}.Release|x64.ActiveCfg = Release|x64
+		{C11C8298-922C-4CE0-824B-80976550E279}.Release|x64.Build.0 = Release|x64
+		{3C55B4A9-6A56-424A-BBF5-9E28E9410967}.Debug|x64.ActiveCfg = Debug|x64
+		{3C55B4A9-6A56-424A-BBF5-9E28E9410967}.Debug|x64.Build.0 = Debug|x64
+		{3C55B4A9-6A56-424A-BBF5-9E28E9410967}.Release|x64.ActiveCfg = Release|x64
+		{3C55B4A9-6A56-424A-BBF5-9E28E9410967}.Release|x64.Build.0 = Release|x64
+		{77922751-A39C-45FA-9096-0FFC3560CC15}.Debug|x64.ActiveCfg = Debug|x64
+		{77922751-A39C-45FA-9096-0FFC3560CC15}.Debug|x64.Build.0 = Debug|x64
+		{77922751-A39C-45FA-9096-0FFC3560CC15}.Release|x64.ActiveCfg = Release|x64
+		{77922751-A39C-45FA-9096-0FFC3560CC15}.Release|x64.Build.0 = Release|x64
+		{57294167-F244-4BE8-8FD2-68FCE8ECF13C}.Debug|x64.ActiveCfg = Debug|x64
+		{57294167-F244-4BE8-8FD2-68FCE8ECF13C}.Debug|x64.Build.0 = Debug|x64
+		{57294167-F244-4BE8-8FD2-68FCE8ECF13C}.Release|x64.ActiveCfg = Release|x64
+		{57294167-F244-4BE8-8FD2-68FCE8ECF13C}.Release|x64.Build.0 = Release|x64
+		{57294167-F244-4BE8-8FD2-68FCE8ECF13C}.Release|x64.Deploy.0 = Release|x64
+		{D1084114-A21E-464A-816A-FA50A27681A0}.Debug|x64.ActiveCfg = Debug|x64
+		{D1084114-A21E-464A-816A-FA50A27681A0}.Debug|x64.Build.0 = Debug|x64
+		{D1084114-A21E-464A-816A-FA50A27681A0}.Release|x64.ActiveCfg = Release|x64
+		{D1084114-A21E-464A-816A-FA50A27681A0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7483B50A-D491-4A00-99C8-B3F25DB6BA3C} = {7C6A44F4-5B77-4724-A399-9F07EFFEDA7D}
+		{4E78733A-ED54-428B-8034-E80F2697A8DD} = {7C6A44F4-5B77-4724-A399-9F07EFFEDA7D}
+		{A968D46C-29F5-401F-97F5-83A38F888DBA} = {7C6A44F4-5B77-4724-A399-9F07EFFEDA7D}
+		{FCAEEE99-6221-4C23-984C-6BE4586BA735} = {5177E188-55EF-46ED-967C-C9809091D720}
+		{11043A55-A907-4348-9101-EB8D1CCE806A} = {5177E188-55EF-46ED-967C-C9809091D720}
+		{711CB374-C5A3-4FEB-8CBD-013503709F5B} = {5177E188-55EF-46ED-967C-C9809091D720}
+		{85754F77-6189-4F1B-9636-EC408C0D1736} = {711CB374-C5A3-4FEB-8CBD-013503709F5B}
+		{AD93814C-57CA-4271-896A-92457DC5D4AB} = {711CB374-C5A3-4FEB-8CBD-013503709F5B}
+		{B6501E63-9808-49CE-A93B-CB4465642916} = {5177E188-55EF-46ED-967C-C9809091D720}
+		{74E7FC12-9636-45ED-8332-73430E9943AC} = {BDB0EEF9-2C9D-4279-B9EF-0E11F9168CE8}
+		{667FFA26-B110-412E-B8DB-033C6027504C} = {74E7FC12-9636-45ED-8332-73430E9943AC}
+		{152B4EC7-1F81-418B-8F4D-FBA67D90322D} = {74E7FC12-9636-45ED-8332-73430E9943AC}
+		{EBA5BB54-74F1-4E7C-81F2-1AD1D6563349} = {74E7FC12-9636-45ED-8332-73430E9943AC}
+		{AD9739BA-7507-4267-ABAD-1B74F06EFFC2} = {AF022573-22DB-4F0A-A334-B212923DE39A}
+		{863ACE7D-9E8D-4770-AB9B-B1207EF86EFB} = {AF022573-22DB-4F0A-A334-B212923DE39A}
+		{706BF1D0-4AFA-4072-BAB3-9B1810D69A6A} = {A60A11FC-D436-4B4F-BA2E-48010EB59C16}
+		{469E51BB-F07C-4263-8A7C-16EE0490ED64} = {A60A11FC-D436-4B4F-BA2E-48010EB59C16}
+		{7B209167-0B15-41D8-A2C2-D3A508C044A4} = {A60A11FC-D436-4B4F-BA2E-48010EB59C16}
+		{9249F139-E803-4F43-BCA7-E7B645E166EC} = {74E7FC12-9636-45ED-8332-73430E9943AC}
+		{9A7B5909-EB9E-466A-8811-A4BE6293C6A6} = {BDB0EEF9-2C9D-4279-B9EF-0E11F9168CE8}
+		{878FFA24-8C8C-42C3-954A-1B7DF98A06A0} = {9A7B5909-EB9E-466A-8811-A4BE6293C6A6}
+		{753C44E3-54A3-40BC-8E23-E2FE1DCAEDA5} = {9A7B5909-EB9E-466A-8811-A4BE6293C6A6}
+		{5C7E5725-BDA1-4090-A949-9BA4E77ADA4B} = {9A7B5909-EB9E-466A-8811-A4BE6293C6A6}
+		{755C71A7-ACC3-4A95-A009-557B15D1ED31} = {BDB0EEF9-2C9D-4279-B9EF-0E11F9168CE8}
+		{4907B476-1D6E-481E-9BF2-8386A466FAC4} = {755C71A7-ACC3-4A95-A009-557B15D1ED31}
+		{8BBFF717-4934-4E73-8D8D-D601925C4A1B} = {755C71A7-ACC3-4A95-A009-557B15D1ED31}
+		{7E44A1DF-9353-4E61-B1A6-0375883A0CD6} = {BDB0EEF9-2C9D-4279-B9EF-0E11F9168CE8}
+		{A7AAF011-25E8-4EF2-919B-CD270398DDC8} = {7E44A1DF-9353-4E61-B1A6-0375883A0CD6}
+		{D93A8CBF-CB9D-4C53-B0DE-9FBF8C26473F} = {7E44A1DF-9353-4E61-B1A6-0375883A0CD6}
+		{25F2554F-C3F4-4444-B788-D9E41AFBA922} = {4B167BEA-3F57-4B59-AD3B-DD53CF9966B4}
+		{C11C8298-922C-4CE0-824B-80976550E279} = {4B167BEA-3F57-4B59-AD3B-DD53CF9966B4}
+		{3C55B4A9-6A56-424A-BBF5-9E28E9410967} = {0246FA5D-50A2-4DEE-BF63-B38B517FBB25}
+		{77922751-A39C-45FA-9096-0FFC3560CC15} = {871CD229-771B-4BCA-A565-01C9CF3DB90C}
+		{57294167-F244-4BE8-8FD2-68FCE8ECF13C} = {871CD229-771B-4BCA-A565-01C9CF3DB90C}
+		{D1084114-A21E-464A-816A-FA50A27681A0} = {871CD229-771B-4BCA-A565-01C9CF3DB90C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32C2E1B6-D06A-4513-89EA-FFB3593EAEDE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/ResourceProviderApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="ResourceProviderWebService_InstanceCount" Value="-1" />
+    <Parameter Name="ResourceProviderWebService_AllowHttp" Value="true" />
+    <Parameter Name="ResourceProviderWebService_HttpCertThumbprint" Value="[Thumbprint]" />
+    <Parameter Name="ResourceProviderWebService_AzureEnvironmentName" Value="Dogfood" />
+    <Parameter Name="ResourceProviderWebService_Locations" Value="['chinanorth', 'chinanorth2', 'chinaeast', 'chinaeast2']" />
+    <Parameter Name="ResourceProviderWebService_SKUs" Value="['B1', 'S1', 'P1']" />
+    <Parameter Name="ResourceProviderWebService_DefaultConnectionString" Value="Server=tcp:bcrdc-cef.database.chinacloudapi.cn,1433;Initial Catalog=cef-dev;Persist Security Info=False;User ID=azureuser;Password=user@123user;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" />
+  </Parameters>
+</Application>

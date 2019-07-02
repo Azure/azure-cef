@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{D1084114-A21E-464A-816A-FA50A27681A0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.EngagementFabric.ResourceProviderWebService</RootNamespace>
+    <AssemblyName>Microsoft.Azure.EngagementFabric.ResourceProviderWebService</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\x64\Debug\Microsoft.Azure.EngagementFabric.ResourceProviderWebService.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);None</AdditionalFileItemNames>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IsServiceFabricServiceProject>true</IsServiceFabricServiceProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.Owin.Host.HttpListener.4.0.0\lib\net451\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.Owin.Hosting.4.0.0\lib\net451\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.Data.3.0.480\lib\net45\Microsoft.ServiceFabric.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Data.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.Data.3.0.480\lib\net45\Microsoft.ServiceFabric.Data.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Diagnostics, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.Diagnostics.Internal.3.0.480\lib\net45\Microsoft.ServiceFabric.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.FabricTransport, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.FabricTransport.Internal.3.0.480\lib\net45\Microsoft.ServiceFabric.FabricTransport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.FabricTransport.V2, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.FabricTransport.Internal.3.0.480\lib\net45\Microsoft.ServiceFabric.FabricTransport.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Internal, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\Microsoft.ServiceFabric.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Internal.Strings, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\Microsoft.ServiceFabric.Internal.Strings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Preview, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\Microsoft.ServiceFabric.Preview.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Services, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.Services.3.0.480\lib\net45\Microsoft.ServiceFabric.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Services.Remoting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.Services.Remoting.3.0.480\lib\net45\Microsoft.ServiceFabric.Services.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Fabric, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\System.Fabric.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Fabric.Management.ServiceModel, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\System.Fabric.Management.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Fabric.Management.ServiceModel.XmlSerializers, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\System.Fabric.Management.ServiceModel.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Fabric.Strings, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\..\..\startup\packages\Microsoft.ServiceFabric.6.1.480\lib\net45\System.Fabric.Strings.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.AspNet.WebApi.Owin.5.2.4\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AspNet.WebApi, Version=5.0.13.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Unity.AspNet.WebApi.5.0.13\lib\net46\Unity.AspNet.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\Unity.Container.5.8.5\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\..\..\startup\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityWebApiActivator.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChannelsController.cs" />
+    <Compile Include="Controllers\NameAvailabilityController.cs" />
+    <Compile Include="Controllers\OperationsController.cs" />
+    <Compile Include="Controllers\SkusController.cs" />
+    <Compile Include="Controllers\SubscriptionsController.cs" />
+    <Compile Include="EntityFramework\ResourceProviderEntities.cs" />
+    <Compile Include="EntityFramework\SubscriptionRegistration.cs">
+      <DependentUpon>ResourceProviderStoreDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\AccountsCreateOrUpdateExample.cs" />
+    <Compile Include="Examples\AccountsDeleteExample.cs" />
+    <Compile Include="Examples\AccountsGetExample.cs" />
+    <Compile Include="Examples\AccountsListByResourceGroupExample.cs" />
+    <Compile Include="Examples\AccountsListChannelTypesExample.cs" />
+    <Compile Include="Examples\AccountsListExample.cs" />
+    <Compile Include="Examples\AccountsListKeysExample.cs" />
+    <Compile Include="Examples\AccountsRegenerateKeyExample.cs" />
+    <Compile Include="Examples\AccountsUpdateExample.cs" />
+    <Compile Include="Examples\ChannelsCreateOrUpdateExample.cs" />
+    <Compile Include="Examples\ChannelsDeleteExample.cs" />
+    <Compile Include="Examples\ChannelsGetExample.cs" />
+    <Compile Include="Examples\ChannelsListExample.cs" />
+    <Compile Include="Examples\CheckNameAvailabilityExample.cs" />
+    <Compile Include="Examples\EngagementFabricExampleBase.cs" />
+    <Compile Include="Examples\OperationsListExample.cs" />
+    <Compile Include="Examples\SKUsListExample.cs" />
+    <Compile Include="Handlers\AuthenticationHandler.cs" />
+    <Compile Include="Handlers\CustomExceptionHandler.cs" />
+    <Compile Include="Handlers\TraceHandler.cs" />
+    <Compile Include="Managers\AccountManager.cs" />
+    <Compile Include="Managers\IAccountManager.cs" />
+    <Compile Include="Managers\ISubscriptionManager.cs" />
+    <Compile Include="Managers\MockAccountManager.cs" />
+    <Compile Include="Managers\SubscriptionManager.cs" />
+    <Compile Include="Metadata\ApiVersionStore.cs" />
+    <Compile Include="Metadata\ChannelTypeStore.cs" />
+    <Compile Include="Metadata\NameStore.cs" />
+    <Compile Include="Metadata\OperationStore.cs" />
+    <Compile Include="Metadata\SkuStore.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountList.cs" />
+    <Compile Include="Models\AccountPatch.cs" />
+    <Compile Include="Models\Channel.cs" />
+    <Compile Include="Models\ChannelList.cs" />
+    <Compile Include="Models\ChannelProperties.cs" />
+    <Compile Include="Models\ChannelTypeDescription.cs" />
+    <Compile Include="Models\ChannelTypeDescriptionList.cs" />
+    <Compile Include="Models\CheckNameAvailabilityParameter.cs" />
+    <Compile Include="Models\CheckNameAvailabilityResult.cs" />
+    <Compile Include="Models\CheckNameUnavailableReason.cs" />
+    <Compile Include="Models\ClientCertificateDescription.cs" />
+    <Compile Include="Models\ClientCertificateDescriptionList.cs" />
+    <Compile Include="Models\CloudError.cs" />
+    <Compile Include="Models\CloudErrorBody.cs" />
+    <Compile Include="Models\KeyDescription.cs" />
+    <Compile Include="Models\KeyDescriptionList.cs" />
+    <Compile Include="Models\KeyRank.cs" />
+    <Compile Include="Models\Operation.cs" />
+    <Compile Include="Models\OperationDisplay.cs" />
+    <Compile Include="Models\OperationList.cs" />
+    <Compile Include="Models\ProxyOnlyResource.cs" />
+    <Compile Include="Models\RegenerateKeyParameter.cs" />
+    <Compile Include="Models\Resource.cs" />
+    <Compile Include="Models\SKU.cs" />
+    <Compile Include="Models\SkuDescription.cs" />
+    <Compile Include="Models\SkuDescriptionList.cs" />
+    <Compile Include="Models\SkuLocationInfoItem.cs" />
+    <Compile Include="Models\SubscriptionDescription.cs" />
+    <Compile Include="Models\SubscriptionFeature.cs" />
+    <Compile Include="Models\SubscriptionProperties.cs" />
+    <Compile Include="Models\SubscriptionState.cs" />
+    <Compile Include="Models\TrackedResource.cs" />
+    <Compile Include="OwinCommunicationListener.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceProviderEventSource.cs" />
+    <Compile Include="ResourceProviderWebService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="EntityFramework\ResourceProviderStoreDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceProviderStoreDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ResourceProviderStoreDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceProviderStoreDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ResourceProviderStoreDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceProviderStoreDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceEventSource.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Store\IResourceProviderStore.cs" />
+    <Compile Include="Store\ResourceProviderStore.cs" />
+    <Compile Include="TenantCache\FullTenantCacheClient.cs" />
+    <Compile Include="Utilities\HttpRequestMessageExtension.cs" />
+    <Compile Include="Utilities\ResourceIdHelper.cs" />
+    <Compile Include="Utilities\RestrictedStringEnumConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EntityFramework\ResourceProviderStoreDataModel.edmx">
+      <LastGenOutput>ResourceProviderStoreDataModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFramework\ResourceProviderStoreDataModel.edmx.diagram">
+      <DependentUpon>ResourceProviderStoreDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="PackageRoot\Config\Settings.xml" />
+    <None Include="PackageRoot\ServiceManifest.xml" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityFramework\ResourceProviderStoreDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ResourceProviderStoreDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>ResourceProviderStoreDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="EntityFramework\ResourceProviderStoreDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResourceProviderStoreDataModel.edmx</DependentUpon>
+      <LastGenOutput>ResourceProviderStoreDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Microsoft.Azure.EngagementFabric.Common\Microsoft.Azure.EngagementFabric.Common.csproj">
+      <Project>{7483b50a-d491-4a00-99c8-b3f25db6ba3c}</Project>
+      <Name>Microsoft.Azure.EngagementFabric.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Microsoft.Azure.EngagementFabric.TenantCacheClient\Microsoft.Azure.EngagementFabric.TenantCacheClient.csproj">
+      <Project>{4e78733a-ed54-428b-8034-e80f2697a8dd}</Project>
+      <Name>Microsoft.Azure.EngagementFabric.TenantCacheClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Interface\Microsoft.Azure.EngagementFabric.TenantCache\Microsoft.Azure.EngagementFabric.TenantCache.csproj">
+      <Project>{11043a55-a907-4348-9101-eb8d1cce806a}</Project>
+      <Name>Microsoft.Azure.EngagementFabric.TenantCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Azure.EngagementFabric.ResourceProviderDocumentation\Microsoft.Azure.EngagementFabric.ResourceProviderDocumentation.csproj">
+      <Project>{77922751-a39c-45fa-9096-0ffc3560cc15}</Project>
+      <Name>Microsoft.Azure.EngagementFabric.ResourceProviderDocumentation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

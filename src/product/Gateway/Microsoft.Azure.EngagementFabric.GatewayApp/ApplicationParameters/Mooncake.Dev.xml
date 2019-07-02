@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/GatewayApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="RequestListener_InstanceCount" Value="-1" />
+    <Parameter Name="RequestListener_OnlyHttps" Value="true" />
+    <Parameter Name="RequestListener_MdmAccount" Value="CEFGlobalMDM" />
+    <Parameter Name="RequestListener_MdmMetricNamespace" Value="GatewayMetrics" />
+    <Parameter Name="RequestListener_Cluster" Value="Dev" />
+    <Parameter Name="RequestListener_AcisCertificateThumbprint" Value="[Thumbprint]" />
+  </Parameters>
+</Application>

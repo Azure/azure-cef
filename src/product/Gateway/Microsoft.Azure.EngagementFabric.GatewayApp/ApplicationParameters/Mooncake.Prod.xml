@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Name="fabric:/GatewayApp" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Parameters>
+    <Parameter Name="RequestListener_InstanceCount" Value="-1" />
+    <Parameter Name="RequestListener_OnlyHttps" Value="true" />
+    <Parameter Name="RequestListener_MdmAccount" Value="cefmdmprod" />
+    <Parameter Name="RequestListener_MdmMetricNamespace" Value="GatewayMetrics" />
+    <Parameter Name="RequestListener_Cluster" Value="Prod" />
+  </Parameters>
+</Application>

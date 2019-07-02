@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/BillingApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="BillingService_PartitionCount" Value="1" />
+    <Parameter Name="BillingService_MinReplicaSetSize" Value="3" />
+    <Parameter Name="BillingService_TargetReplicaSetSize" Value="3" />
+    <!--BillingService-->
+    <Parameter Name="BillingService_StoreAccountConnectionString" Value="" />
+    <Parameter Name="BillingService_UsageReportingTableName" Value="usage" />
+    <Parameter Name="BillingService_UsageReportingQueueName" Value="usage" />
+    <Parameter Name="BillingService_PushUsageForWhitelistedSubscriptionsOnly" Value="true" />
+    <Parameter Name="BillingService_WhitelistedSubscriptions" Value="1dcf9342-1f98-4965-8ca9-02f0b7793139" />
+  </Parameters>
+</Application>

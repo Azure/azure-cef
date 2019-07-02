@@ -1,0 +1,22 @@
+﻿// <copyright file="DomainList.cs" company="Microsoft Corporation">
+// Copyright (c) Microsoft Corporation.// Licensed under the MIT license.
+// </copyright>
+
+using System.Collections.Generic;
+using Microsoft.Azure.EngagementFabric.Common.Pagination;
+using Newtonsoft.Json;
+
+namespace Microsoft.Azure.EngagementFabric.EmailProvider.Model
+{
+    public class DomainList
+    {
+        [JsonProperty("Total")]
+        public int Total { get; set; }
+
+        [JsonProperty("Domains")]
+        public List<Domain> Domains { get; set; }
+
+        [JsonIgnore]
+        public DbContinuationToken NextLink { get; set; }
+    }
+}

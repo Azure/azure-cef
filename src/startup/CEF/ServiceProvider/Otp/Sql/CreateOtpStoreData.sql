@@ -1,0 +1,2 @@
+﻿set nocount on
+GO

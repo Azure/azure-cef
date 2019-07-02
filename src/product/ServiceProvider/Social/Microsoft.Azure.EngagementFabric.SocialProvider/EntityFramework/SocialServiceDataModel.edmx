@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cefdevslspModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserInfoStorageAccounts">
+          <Key>
+            <PropertyRef Name="StorageAccountId" />
+          </Key>
+          <Property Name="StorageAccountId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="SubscriptionId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="ContainerType" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ConnectionString" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfoTargetDbs">
+          <Key>
+            <PropertyRef Name="UserInfoTargetDbId" />
+          </Key>
+          <Property Name="UserInfoTargetDbId" Type="bigint" Nullable="false" />
+          <Property Name="SubscriptionId" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="ConnectionString" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="MaxPoolSize" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="cefdevslspModelStoreContainer">
+          <EntitySet Name="UserInfoStorageAccounts" EntityType="Self.UserInfoStorageAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfoTargetDbs" EntityType="Self.UserInfoTargetDbs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cefdevslspModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserInfoStorageAccount">
+          <Key>
+            <PropertyRef Name="StorageAccountId" />
+          </Key>
+          <Property Name="StorageAccountId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubscriptionId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContainerType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConnectionString" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserInfoStorageAccounts" EntityType="Self.UserInfoStorageAccount" />
+          <EntitySet Name="UserInfoTargetDbs" EntityType="cefdevslspModel.UserInfoTargetDb" />
+        </EntityContainer>
+        <EntityType Name="UserInfoTargetDb">
+          <Key>
+            <PropertyRef Name="UserInfoTargetDbId" />
+          </Key>
+          <Property Name="UserInfoTargetDbId" Type="Int64" Nullable="false" />
+          <Property Name="SubscriptionId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="ConnectionString" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="MaxPoolSize" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cefdevslspModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="UserInfoStorageAccounts">
+            <EntityTypeMapping TypeName="cefdevslspModel.UserInfoStorageAccount">
+              <MappingFragment StoreEntitySet="UserInfoStorageAccounts">
+                <ScalarProperty Name="StorageAccountId" ColumnName="StorageAccountId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
+                <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoTargetDbs">
+            <EntityTypeMapping TypeName="cefdevslspModel.UserInfoTargetDb">
+              <MappingFragment StoreEntitySet="UserInfoTargetDbs">
+                <ScalarProperty Name="MaxPoolSize" ColumnName="MaxPoolSize" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="UserInfoTargetDbId" ColumnName="UserInfoTargetDbId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

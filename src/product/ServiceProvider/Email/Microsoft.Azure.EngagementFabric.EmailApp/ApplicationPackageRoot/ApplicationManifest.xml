@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Microsoft.Azure.EngagementFabric.EmailAppType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <!--EmailDispacher-->
+    <Parameter Name="Microsoft.Azure.EngagementFabric.MessageDispatcher_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.MessageDispatcher_PartitionCount" DefaultValue="1" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.MessageDispatcher_PartitionHighKey" DefaultValue="1" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.MessageDispatcher_TargetReplicaSetSize" DefaultValue="3" />
+    <!--EmailProvider-->
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_DefaultConnectionString" DefaultValue="" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_TelemetryStoreConnectionString" DefaultValue="" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_MdmAccount" DefaultValue="" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_MdmMetricNamespace" DefaultValue="" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_Cluster" DefaultValue="" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_ActorAccountMaxCount" DefaultValue="" />
+    <Parameter Name="Microsoft.Azure.EngagementFabric.EmailProvider_ActorReportMaxCount" DefaultValue="" />
+  </Parameters>
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
+       should match the Name and Version attributes of the ServiceManifest element defined in the 
+       ServiceManifest.xml file. -->
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Microsoft.Azure.EngagementFabric.MessageDispatcherPkg" ServiceManifestVersion="1.0.1" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Microsoft.Azure.EngagementFabric.EmailProviderPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="Microsoft.Azure.EngagementFabric.MessageDispatcher" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="Microsoft.Azure.EngagementFabric.MessageDispatcherType" TargetReplicaSetSize="[MessageDispatcher_TargetReplicaSetSize]" MinReplicaSetSize="[MessageDispatcher_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[MessageDispatcher_PartitionCount]" LowKey="0" HighKey="[MessageDispatcher_PartitionHighKey]" />
+      </StatefulService>
+    </Service>
+    <Service Name="Microsoft.Azure.EngagementFabric.EmailProvider" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="Microsoft.Azure.EngagementFabric.EmailProviderType" InstanceCount="[Microsoft.Azure.EngagementFabric.EmailProvider_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+  </DefaultServices>
+</ApplicationManifest>

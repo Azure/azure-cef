@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmailServiceDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConnectorCredentialAssignments">
+          <Key>
+            <PropertyRef Name="EngagementAccount" />
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="EngagementAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Provider" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConnectorCredentials">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConnectorMetadata">
+          <Key>
+            <PropertyRef Name="Provider" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ServiceUri" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="BatchSize" Type="bigint" Nullable="false" />
+          <Property Name="ReportType" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Domains">
+          <Key>
+            <PropertyRef Name="Domain" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Domain" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="EngagementAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EngagementAccounts">
+          <Key>
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="EngagementAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SubscriptionId" Type="varchar" MaxLength="36" />
+          <Property Name="Properties" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="EngagementAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="64" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Properties" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SenderAddresses">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="EngagementAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ForwardAddress" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Properties" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Templates">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="EngagementAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="SenderAddressId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="SenderAlias" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ReplyAddress" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MessageBody" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="StateMessage" Type="nvarchar" MaxLength="256" />
+          <Property Name="Created" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Properties" Type="nvarchar(max)" />
+          <Property Name="EnableUnSubscribe" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="EmailServiceDataModelStoreContainer">
+          <EntitySet Name="ConnectorCredentialAssignments" EntityType="Self.ConnectorCredentialAssignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectorCredentials" EntityType="Self.ConnectorCredentials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectorMetadata" EntityType="Self.ConnectorMetadata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Domains" EntityType="Self.Domains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EngagementAccounts" EntityType="Self.EngagementAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SenderAddresses" EntityType="Self.SenderAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Templates" EntityType="Self.Templates" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmailServiceDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ConnectorCredentialAssignmentEntity">
+          <Key>
+            <PropertyRef Name="EngagementAccount" />
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="EngagementAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Provider" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="ConnectorCredentialEntity">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Provider" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="ConnectorMetadataEntity">
+          <Key>
+            <PropertyRef Name="Provider" />
+          </Key>
+          <Property Name="Provider" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceUri" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BatchSize" Type="Int64" Nullable="false" />
+          <Property Name="ReportType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="DomainEntity">
+          <Key>
+            <PropertyRef Name="Domain" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Domain" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngagementAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="EngagementAccountEntity">
+          <Key>
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="EngagementAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SubscriptionId" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="Properties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GroupEntity">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngagementAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Properties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SenderAddressEntity">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngagementAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ForwardAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Properties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TemplateEntity">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="EngagementAccount" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngagementAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderAddressId" Type="Guid" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SenderAlias" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReplyAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateMessage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Properties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnableUnSubscribe" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="EmailServiceDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConnectorCredentialAssignments" EntityType="EmailServiceDataModel.ConnectorCredentialAssignmentEntity" />
+          <EntitySet Name="ConnectorCredentials" EntityType="EmailServiceDataModel.ConnectorCredentialEntity" />
+          <EntitySet Name="ConnectorMetadata" EntityType="EmailServiceDataModel.ConnectorMetadataEntity" />
+          <EntitySet Name="Domains" EntityType="EmailServiceDataModel.DomainEntity" />
+          <EntitySet Name="EngagementAccounts" EntityType="EmailServiceDataModel.EngagementAccountEntity" />
+          <EntitySet Name="Groups" EntityType="EmailServiceDataModel.GroupEntity" />
+          <EntitySet Name="SenderAddresses" EntityType="EmailServiceDataModel.SenderAddressEntity" />
+          <EntitySet Name="Templates" EntityType="EmailServiceDataModel.TemplateEntity" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmailServiceDataModelStoreContainer" CdmEntityContainer="EmailServiceDbEntities">
+          <EntitySetMapping Name="ConnectorCredentialAssignments">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.ConnectorCredentialAssignmentEntity">
+              <MappingFragment StoreEntitySet="ConnectorCredentialAssignments">
+                <ScalarProperty Name="EngagementAccount" ColumnName="EngagementAccount" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectorCredentials">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.ConnectorCredentialEntity">
+              <MappingFragment StoreEntitySet="ConnectorCredentials">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectorMetadata">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.ConnectorMetadataEntity">
+              <MappingFragment StoreEntitySet="ConnectorMetadata">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ServiceUri" ColumnName="ServiceUri" />
+                <ScalarProperty Name="BatchSize" ColumnName="BatchSize" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domains">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.DomainEntity">
+              <MappingFragment StoreEntitySet="Domains">
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="EngagementAccount" ColumnName="EngagementAccount" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngagementAccounts">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.EngagementAccountEntity">
+              <MappingFragment StoreEntitySet="EngagementAccounts">
+                <ScalarProperty Name="EngagementAccount" ColumnName="EngagementAccount" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="Properties" ColumnName="Properties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.GroupEntity">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EngagementAccount" ColumnName="EngagementAccount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Properties" ColumnName="Properties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SenderAddresses">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.SenderAddressEntity">
+              <MappingFragment StoreEntitySet="SenderAddresses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="EngagementAccount" ColumnName="EngagementAccount" />
+                <ScalarProperty Name="ForwardAddress" ColumnName="ForwardAddress" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Properties" ColumnName="Properties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="EmailServiceDataModel.TemplateEntity">
+              <MappingFragment StoreEntitySet="Templates">
+                <ScalarProperty Name="EnableUnSubscribe" ColumnName="EnableUnSubscribe" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EngagementAccount" ColumnName="EngagementAccount" />
+                <ScalarProperty Name="SenderAddressId" ColumnName="SenderAddressId" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="SenderAlias" ColumnName="SenderAlias" />
+                <ScalarProperty Name="ReplyAddress" ColumnName="ReplyAddress" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="StateMessage" ColumnName="StateMessage" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Properties" ColumnName="Properties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

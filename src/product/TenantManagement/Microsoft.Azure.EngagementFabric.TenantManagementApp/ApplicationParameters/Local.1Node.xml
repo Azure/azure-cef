@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/TenantManagementApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="TenantCacheService_InstanceCount" Value="-1" />
+    <!--AdminStore-->
+    <Parameter Name="AdminStore_DefaultConnectionString" Value="[azure sql db connection string]" />
+    <!--TenantCache-->
+    <Parameter Name="TenantCache_DefaultConnectionString" Value="[redis connection string]" />
+    <Parameter Name="TenantCache_DatabaseId" Value="1" />
+    <Parameter Name="TenantCache_QuotaDatabaseId" Value="2" />
+  </Parameters>
+</Application>

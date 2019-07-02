@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/SmsApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <!--SmsProvider cluster setting-->
+    <Parameter Name="SmsProvider_InstanceCount" Value="1" />
+    <!--SmsProvider bussinese setting-->
+    <Parameter Name="SmsProvider_DefaultConnectionString" Value="[azure sql connection string]" />
+    <Parameter Name="SmsProvider_TelemetryStoreConnectionString" Value="[azure storage connection string]" />
+    <Parameter Name="SmsProvider_DispatchPartitions" Value="[Notification:0:2][Otp:3:5][Promotion:6:9]" />
+    <Parameter Name="SmsProvider_MdmAccount" Value="CEFGlobalMDM" />
+    <Parameter Name="SmsProvider_MdmMetricNamespace" Value="SmsMetrics" />
+    <Parameter Name="SmsProvider_Cluster" Value="Dev" />
+    <Parameter Name="SmsProvider_SenderAddress" Value="[email_account]" />
+    <Parameter Name="SmsProvider_SenderPassword" Value="[email_account_pwd]" />
+    <Parameter Name="SmsProvider_ReceiverAddresses" Value="[email_account]" />
+    <Parameter Name="SmsProvider_MdmCertificateThumbprint" Value="[Thumbprint]" />
+    <Parameter Name="SmsProvider_MdmArchiveInterval" Value="PT1S" />
+    <!--SmsDispatcher cluster setting-->
+    <Parameter Name="MessageDispatcher_PartitionCount" Value="2" />
+    <Parameter Name="MessageDispatcher_PartitionHighKey" Value="2" />
+    <Parameter Name="MessageDispatcher_MinReplicaSetSize" Value="1" />
+    <Parameter Name="MessageDispatcher_TargetReplicaSetSize" Value="1" />
+  </Parameters>
+</Application>

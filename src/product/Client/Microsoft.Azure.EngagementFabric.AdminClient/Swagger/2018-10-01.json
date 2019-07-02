@@ -1,0 +1,1275 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "CEF Private Admin API",
+    "version": "1.0",
+    "title": "CEFAdminApi"
+  },
+  "host": "dev.cef.chinacloudapi.cn",
+  "schemes": [ "https" ],
+  "paths": {
+    "/tenants/{tenant}": {
+      "get": {
+        "tags": [ "Common" ],
+        "summary": "Get CEF tenant",
+        "description": "",
+        "operationId": "Common_GetTenant",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "tenant",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tenant"
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}": {
+      "get": {
+        "tags": [ "Sms - Account" ],
+        "summary": "Get account (SMS)",
+        "description": "",
+        "operationId": "Sms_GetAccount",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SmsAccount"
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts": {
+      "post": {
+        "tags": [ "Sms - Account" ],
+        "summary": "Create or Update account",
+        "description": "",
+        "operationId": "Sms_CreateOrUpdateAccount",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "in": "body",
+            "name": "update",
+            "description": "Account",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SmsAccount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SmsAccount"
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}/credentialassignments": {
+      "get": {
+        "tags": [ "Sms - Account" ],
+        "summary": "Get account credential assignments",
+        "description": "",
+        "operationId": "Sms_GetCredentialAssignments",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SmsCredentialAssignment"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Sms - Account" ],
+        "summary": "Create or update account credential assignment",
+        "description": "",
+        "operationId": "Sms_CreateOrUpdateCredentialAssignment",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "credentialAssignment",
+            "description": "Account credential assignment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SmsCredentialAssignment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SmsCredentialAssignment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}/credentialassignments/{provider}/{id}": {
+      "delete": {
+        "tags": [ "Sms - Account" ],
+        "summary": "Delete credential assignment",
+        "description": "",
+        "operationId": "Sms_DeleteCredentialAssignment",
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Third party SMS provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "AppId of third party SMS provider",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/services/sms/admin/credentials": {
+      "post": {
+        "tags": [ "Sms - Credential" ],
+        "summary": "Create or update provider credential",
+        "description": "",
+        "operationId": "Sms_CreateOrUpdateCredential",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "in": "body",
+            "name": "credential",
+            "description": "Credential",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SmsCredential"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SmsCredential"
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/credentials/{provider}/{id}": {
+      "get": {
+        "tags": [ "Sms - Credential" ],
+        "summary": "Get provider credential",
+        "description": "",
+        "operationId": "Sms_GetCredential",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Third party SMS provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "AppId of third party SMS provider",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SmsCredential"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Sms - Credential" ],
+        "summary": "Delete provider credential",
+        "description": "",
+        "operationId": "Sms_DeleteCredential",
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Third party SMS provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "AppId of third party SMS provider",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}/signatures": {
+      "post": {
+        "tags": [ "Sms - Signature" ],
+        "summary": "Create or update signature",
+        "description": "",
+        "operationId": "Sms_CreateOrUpdateSignature",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Signature",
+            "description": "Signature",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Signature"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Signature"
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}/signatures/{signature}": {
+      "get": {
+        "tags": [ "Sms - Signature" ],
+        "summary": "Get signature",
+        "description": "",
+        "operationId": "Sms_GetSignature",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "path",
+            "description": "Name of CEF signature",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Signature"
+            }
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}/signatures/{signature}/quota": {
+      "put": {
+        "tags": [ "Sms - Signature" ],
+        "summary": "Create or update signature quota",
+        "description": "",
+        "operationId": "Sms_CreateOrUpdateSignatureQuota",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "path",
+            "description": "Name of CEF signature",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "quota",
+            "description": "quota count",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Sms - Signature" ],
+        "summary": "Delete signature quota",
+        "description": "",
+        "operationId": "Sms_DeleteSignatureQuota",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "path",
+            "description": "Name of CEF signature",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/services/sms/admin/accounts/{account}/templates/{template}": {
+      "put": {
+        "tags": [ "Sms - Template" ],
+        "summary": "Update template",
+        "description": "",
+        "operationId": "Sms_UpdateTemplate",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "template",
+            "in": "path",
+            "description": "Name of template",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Signature",
+            "description": "Signature",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TemplateUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Template"
+            }
+          }
+        }
+      }
+    },
+    "/services/email/admin/accounts/{account}": {
+      "get": {
+        "tags": [ "Email - Account" ],
+        "summary": "Get account (Email)",
+        "description": "",
+        "operationId": "Email_GetAccount",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmailAccount"
+            }
+          }
+        }
+      }
+    },
+    "/services/email/admin/accounts": {
+      "post": {
+        "tags": [ "Email - Account" ],
+        "summary": "Create or Update account",
+        "description": "",
+        "operationId": "Email_CreateOrUpdateAccount",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "in": "body",
+            "name": "update",
+            "description": "Account",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailAccount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmailAccount"
+            }
+          }
+        }
+      }
+    },
+    "/services/email/admin/accounts/{account}/credentialassignments": {
+      "get": {
+        "tags": [ "Email - Account" ],
+        "summary": "Get account credential assignments",
+        "description": "",
+        "operationId": "Email_GetCredentialAssignments",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EmailCredentialAssignment"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [ "Email - Account" ],
+        "summary": "Create or update account credential assignment",
+        "description": "",
+        "operationId": "Email_CreateOrUpdateCredentialAssignment",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "credentialAssignment",
+            "description": "Account credential assignment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailCredentialAssignment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EmailCredentialAssignment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/email/admin/accounts/{account}/credentialassignments/{provider}/{id}": {
+      "delete": {
+        "tags": [ "Email - Account" ],
+        "summary": "Delete credential assignment",
+        "description": "",
+        "operationId": "Email_DeleteCredentialAssignment",
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Third party Email provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "AppId of third party Email provider",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/services/email/admin/credentials": {
+      "post": {
+        "tags": [ "Email - Credential" ],
+        "summary": "Create or update provider credential",
+        "description": "",
+        "operationId": "Email_CreateOrUpdateCredential",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "in": "body",
+            "name": "credential",
+            "description": "Credential",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailCredential"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmailCredential"
+            }
+          }
+        }
+      }
+    },
+    "/services/email/admin/credentials/{provider}/{id}": {
+      "get": {
+        "tags": [ "Email - Credential" ],
+        "summary": "Get provider credential",
+        "description": "",
+        "operationId": "Email_GetCredential",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Third party Email provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "AppId of third party Email provider",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmailCredential"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Email - Credential" ],
+        "summary": "Delete provider credential",
+        "description": "",
+        "operationId": "Email_DeleteCredential",
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "Third party Email provider",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "AppId of third party Email provider",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/services/email/admin/accounts/{account}/domains": {
+      "post": {
+        "tags": [ "Email - Domain" ],
+        "summary": "Create or update domain",
+        "description": "",
+        "operationId": "Email_CreateOrUpdateDomain",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "domain",
+            "description": "Domain name",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailDomain"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmailDomain"
+            }
+          }
+        }
+      }
+    },
+    "/services/email/admin/accounts/{account}/domains/{domain}": {
+      "get": {
+        "tags": [ "Email - Domain" ],
+        "summary": "Get Domain",
+        "description": "",
+        "operationId": "Email_GetDomain",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2018-10-01"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "description": "Name of CEF account",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "Name of CEF domain",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmailDomain"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Tenant": {
+      "type": "object",
+      "properties": {
+        "tenantDescription": {
+          "$ref": "#/definitions/Tenant_tenantDescription"
+        }
+      },
+      "example": {
+        "tenantDescription": {
+          "authenticationRules": [
+            {
+              "secondaryKey": "secondaryKey",
+              "keyName": "keyName",
+              "primaryKey": "primaryKey"
+            },
+            {
+              "secondaryKey": "secondaryKey",
+              "keyName": "keyName",
+              "primaryKey": "primaryKey"
+            }
+          ]
+        }
+      }
+    },
+    "AuthenticationRule": {
+      "type": "object",
+      "properties": {
+        "keyName": {
+          "type": "string"
+        },
+        "primaryKey": {
+          "type": "string"
+        },
+        "secondaryKey": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "secondaryKey": "secondaryKey",
+        "keyName": "keyName",
+        "primaryKey": "primaryKey"
+      }
+    },
+    "SmsAccount": {
+      "type": "object",
+      "required": [ "account" ],
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "accountSettings": {
+          "$ref": "#/definitions/SmsAccountSettings"
+        },
+        "provider": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "account": "account",
+        "accountSettings": {
+          "promotionRestricted": true
+        },
+        "provider": "Yuexin"
+      }
+    },
+    "SmsAccountSettings": {
+      "type": "object",
+      "required": [ "promotionRestricted" ],
+      "properties": {
+        "promotionRestricted": {
+          "type": "boolean"
+        }
+      },
+      "example": {
+        "promotionRestricted": true
+      }
+    },
+    "SmsCredentialAssignment": {
+      "type": "object",
+      "required": [ "active", "channelType", "enabled", "id", "provider" ],
+      "properties": {
+        "channelType": {
+          "$ref": "#/definitions/SmsChannelType"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "example": {
+        "provider": "provider",
+        "active": true,
+        "channelType": {},
+        "id": "id",
+        "enabled": true
+      }
+    },
+    "SmsCredential": {
+      "type": "object",
+      "required": [ "channelType", "id", "properties", "provider" ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "channelType": {
+          "$ref": "#/definitions/SmsChannelType"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      "example": {
+        "provider": "provider",
+        "channelType": {},
+        "id": "id",
+        "properties": "{}"
+      }
+    },
+    "Signature": {
+      "type": "object",
+      "required": [ "signature", "state", "type" ],
+      "properties": {
+        "signature": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/SmsChannelType"
+        },
+        "state": {
+          "$ref": "#/definitions/ResourceState"
+        },
+        "stateMessage": {
+          "type": "string"
+        },
+        "extendedCode": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "signature": "signature",
+        "stateMessage": "stateMessage",
+        "state": {},
+        "type": {}
+      }
+    },
+    "TemplateUpdateRequest": {
+      "type": "object",
+      "required": [ "state" ],
+      "properties": {
+        "state": {
+          "$ref": "#/definitions/ResourceState"
+        },
+        "stateMessage": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "stateMessage": "stateMessage",
+        "state": {}
+      }
+    },
+    "Template": {
+      "type": "object",
+      "properties": {
+        "templateName": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "tplType": {
+          "type": "string",
+          "description": "Message type (Notification or Otp or Promotion)",
+          "enum": [ "Notification", "Otp", "Promotion" ],
+          "x-ms-enum": {
+            "name": "MessageType",
+            "modelAsString": true
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/ResourceState"
+        }
+      },
+      "example": {
+        "tplType": "Notification",
+        "templateName": "templateName",
+        "signature": "signature",
+        "state": {},
+        "message": "message"
+      }
+    },
+    "SmsChannelType": {
+      "type": "string",
+      "description": "SMS channel type (Industry or Marketing or Both)",
+      "enum": [ "Industry", "Marketing", "Both" ],
+      "x-ms-enum": {
+        "name": "SmsChannelType",
+        "modelAsString": true
+      }
+    },
+    "ResourceState": {
+      "type": "string",
+      "description": "Resource state",
+      "enum": [ "Active", "Pending", "Forbidden", "Disabled" ],
+      "x-ms-enum": {
+        "name": "ResourceState",
+        "modelAsString": true
+      }
+    },
+    "Tenant_tenantDescription": {
+      "properties": {
+        "authenticationRules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AuthenticationRule"
+          }
+        }
+      },
+      "example": {
+        "authenticationRules": [
+          {
+            "secondaryKey": "secondaryKey",
+            "keyName": "keyName",
+            "primaryKey": "primaryKey"
+          },
+          {
+            "secondaryKey": "secondaryKey",
+            "keyName": "keyName",
+            "primaryKey": "primaryKey"
+          }
+        ]
+      }
+    },
+    "EmailAccount": {
+      "type": "object",
+      "required": [ "account" ],
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "EmailCredential": {
+      "type": "object",
+      "required": [ "id", "properties", "provider" ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "EmailCredentialAssignment": {
+      "type": "object",
+      "required": [ "active", "enabled", "id", "provider" ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "EmailDomain": {
+      "type": "object",
+      "required": [ "domainName", "state" ],
+      "properties": {
+        "domainName": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/ResourceState"
+        },
+        "stateMessage": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "ApiVersion": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "default": "2018-10-01"
+    }
+  }
+}

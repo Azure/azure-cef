@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <!-- Add your custom configuration sections and parameters here -->
+  <Section Name="SmsProvider">
+    <Parameter Name="DefaultConnectionString" Value="" />
+    <Parameter Name="TelemetryStoreConnectionString" Value="" />
+    <Parameter Name="DispatchPartitions" Value="" />
+    <Parameter Name="MdmAccount" Value="" />
+    <Parameter Name="MdmMetricNamespace" Value="" />
+    <Parameter Name="Cluster" Value="" />
+    <Parameter Name="SenderAddress" Value="" />
+    <Parameter Name="SenderPassword" Value="" />
+    <Parameter Name="ReceiverAddresses" Value="" />
+    <Parameter Name="MdmCertificateThumbprint" Value="" />
+    <Parameter Name="MdmArchiveInterval" Value="" />
+  </Section>
+</Settings>

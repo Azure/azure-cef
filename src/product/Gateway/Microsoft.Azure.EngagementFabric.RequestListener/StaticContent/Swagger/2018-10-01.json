@@ -1,0 +1,1442 @@
+﻿{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "SMS and Social Login",
+    "version" : "1.0.0",
+    "title" : "CEF API Prod (SMS, OTP AND SOCIAL LOGIN)",
+    "contact" : {
+      "email" : "haoliuh@microsoft.com"
+    }
+  },
+  "host" : "cef.chinacloudapi.cn",
+  "tags" : [ {
+    "name" : "SMS",
+    "description" : "Operation related to SMS notification"
+  }, {
+    "name" : "SMS (OTP)",
+    "description" : "Operation related to One Time Password authentication."
+  }, {
+    "name" : "Social Login",
+    "description" : "Operation related to social login"
+  } ],
+  "paths" : {
+    "/services/sms/templates" : {
+      "get" : {
+        "tags" : [ "SMS" ],
+        "summary" : "List all SMS templates",
+        "description" : "List all SMS templates",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "continuationToken",
+          "in" : "query",
+          "description" : "The continuationToken query string parameter continues the enumeration.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "count",
+          "in" : "query",
+          "description" : "The $count query option specifies the maximum number of results per response. Default value is 100.",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns all templates.",
+            "headers" : {
+              "continuationToken" : {
+                "type" : "string",
+                "description" : "The continuationtoken of next query."
+              }
+            },
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "total" : {
+                  "type" : "integer",
+                  "example" : 1
+                },
+                "templates" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/definitions/smsTemplate"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          },
+          "404" : {
+            "description" : "Resource not found. customized message."
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Create or update a SMS template.",
+        "description" : "Create or update a SMS template.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "SMS template",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SMS template"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/smsTemplate"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      }
+    },
+    "/services/sms/templates/{templateName}" : {
+      "get" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Read a SMS template.",
+        "description" : "Read a SMS template.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "templateName",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "default" : "Default_Promotion"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the template",
+            "schema" : {
+              "$ref" : "#/definitions/smsTemplate"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Delete a sms template.",
+        "description" : "Delete a sms template given a template name.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "templateName",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "default" : "Default_Promotion"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Deleted"
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      }
+    },
+    "/services/sms/signatures" : {
+      "get" : {
+        "tags" : [ "SMS" ],
+        "summary" : "List all SMS signature",
+        "description" : "List all SMS signature",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "continuationToken",
+          "in" : "query",
+          "description" : "The continuationToken query string parameter continues the enumeration.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "count",
+          "in" : "query",
+          "description" : "The $count query option specifies the maximum number of results per response. Default value is 100.",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns all signature.",
+            "headers" : {
+              "continuationToken" : {
+                "type" : "string",
+                "description" : "The continuationtoken of next query."
+              }
+            },
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "total" : {
+                  "type" : "integer",
+                  "example" : 1
+                },
+                "signatures" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/definitions/smsSignature"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          },
+          "404" : {
+            "description" : "Resource not found. customized message."
+          }
+        }
+      }
+    },
+    "/services/sms/signatures/{signature}" : {
+      "get" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Read a SMS signature.",
+        "description" : "Read a SMS signature.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "signature",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "default" : "Disney China"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the signature",
+            "schema" : {
+              "$ref" : "#/definitions/smsSignature"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Delete a sms signature.",
+        "description" : "Delete a sms signature given a signature name.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "signature",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "default" : "Disney China"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Deleted"
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      }
+    },
+    "/services/sms/messages" : {
+      "post" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Send sms messages to users.",
+        "description" : "Send sms messages to users.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "message",
+          "description" : "message body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/smsMessage"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "message sent sucessfully.",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "messageId" : {
+                  "type" : "string",
+                  "example" : "A341974A-30AD-4F78-B2CF-68A9A968AF69"
+                },
+                "state" : {
+                  "type" : "string",
+                  "example" : "SUCCESS",
+                  "description" : "indicate the operation result."
+                },
+                "sendTime" : {
+                  "type" : "string",
+                  "example" : "2018-02-12T06:15:56.5718536Z"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          },
+          "403" : {
+            "description" : "Quota exceeded or message too large; message was rejected."
+          }
+        }
+      }
+    },
+    "/services/sms/messages/{messageId}" : {
+      "get" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Get sms sending report for each phone number.",
+        "description" : "Get sms report for each phone number.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "messageId",
+          "in" : "path",
+          "description" : "pass a messageId to check message telemetry",
+          "required" : true,
+          "type" : "string",
+          "default" : "A4C3A2D0-E66C-4F78-B2A7-2DB4FD47EAF4"
+        }, {
+          "name" : "continuationToken",
+          "in" : "query",
+          "description" : "The continuationToken query string parameter continues the enumeration.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "count",
+          "in" : "query",
+          "description" : "The $count query option specifies the maximum number of results per response. Default value is 100.",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return sms telemetry.",
+            "headers" : {
+              "continuationToken" : {
+                "type" : "string",
+                "description" : "The continuationtoken of next query."
+              }
+            },
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "messageId" : {
+                  "type" : "string",
+                  "example" : "A4C3A2D0-E66C-4F78-B2A7-2DB4FD47EAF4",
+                  "description" : "the overall status of this sms sending operation"
+                },
+                "targets" : {
+                  "type" : "integer",
+                  "example" : 5
+                },
+                "delivered" : {
+                  "type" : "integer",
+                  "example" : 5
+                },
+                "failed" : {
+                  "type" : "integer",
+                  "example" : 0
+                },
+                "details" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/definitions/inline_response_200_3_details"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          },
+          "403" : {
+            "description" : "Quota exceeded or message too large; message was rejected."
+          }
+        }
+      }
+    },
+    "/services/sms/inbound" : {
+      "get" : {
+        "tags" : [ "SMS" ],
+        "summary" : "Get inbound sms message",
+        "description" : "Get inbound sms message. Inbound message will be stored for 72 hours. Retreived message will be deleted.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "continuationToken",
+          "in" : "query",
+          "description" : "The continuationToken query string parameter continues the enumeration.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "count",
+          "in" : "query",
+          "description" : "The $count query option specifies the maximum number of results per response. Default value is 100.",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return inbound sms message.",
+            "headers" : {
+              "continuationToken" : {
+                "type" : "string",
+                "description" : "The continuationtoken of next query."
+              }
+            },
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/inboundSMSMessage"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/sociallogin/userinfo" : {
+      "post" : {
+        "tags" : [ "Social Login" ],
+        "summary" : "Get user info from a social platform.",
+        "description" : "Get user info from a social platform.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "userinforequest",
+          "description" : "Request body for getting a user profile",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/socialAuthProfileReq"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "description" : {
+                  "$ref" : "#/definitions/socialAuthProfileRtn"
+                },
+                "createTime" : {
+                  "type" : "string",
+                  "example" : "2018-02-12T06:05:03.0127675Z"
+                },
+                "modifiedTime" : {
+                  "type" : "string",
+                  "example" : "2018-02-12T06:05:03.0127675Z"
+                }
+              },
+              "example" : {
+                "description" : {
+                  "channelName" : "qq",
+                  "channelProperties" : {
+                    "id" : "4D9BDE681C3A8452FC65C4601F109706",
+                    "socialProfile" : {
+                      "nickname" : "Practicing",
+                      "gender" : "男",
+                      "province" : "北京",
+                      "city" : "朝阳",
+                      "year" : "2011"
+                    }
+                  },
+                  "createdTime" : "2018-06-25T03:55:15.4974552Z",
+                  "modifiedTime" : "2018-06-25T10:13:49.3421101Z"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Social Login" ],
+        "summary" : "Remove a social user from CEF.",
+        "description" : "Remove a social user from CEF.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "channel",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "default" : "qq"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "default" : "8C81DDC3BD6B524538C556C40609CD34"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Deleted"
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      }
+    },
+    "/services/otp/start" : {
+      "post" : {
+        "tags" : [ "SMS (OTP)" ],
+        "summary" : "Send verfification to end users.",
+        "description" : "Send verfification to end users.",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "otpstartrequest",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/otpstartrequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "operation is done successfully.",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "expireTime" : {
+                  "type" : "integer",
+                  "example" : 300
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      }
+    },
+    "/services/otp/check" : {
+      "post" : {
+        "tags" : [ "SMS (OTP)" ],
+        "summary" : "Verify code.",
+        "description" : "Verify code",
+        "parameters" : [ {
+          "name" : "api-version",
+          "in" : "query",
+          "description" : "Version of API call.",
+          "required" : true,
+          "type" : "string",
+          "default" : "2018-10-01"
+        }, {
+          "name" : "Account",
+          "in" : "header",
+          "description" : "Tenant account in CEF.",
+          "required" : true,
+          "type" : "string",
+          "default" : "MockAccount"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "SASToken for authorization",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "otpcheckrequest",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/otpcheckrequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "operation is done sucessfully.",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "state" : {
+                  "type" : "string",
+                  "example" : "SUCCESS"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request body. The registration could not be created because the request was malformed."
+          },
+          "401" : {
+            "description" : "Authorization failure. The access key was incorrect."
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "socialAuthProfileReq" : {
+      "type" : "object",
+      "properties" : {
+        "channelName" : {
+          "type" : "string",
+          "example" : "wechat",
+          "description" : "CEF supports wechat, qq and weibo"
+        },
+        "channelProperties" : {
+          "$ref" : "#/definitions/socialAuthProfileReq_channelProperties"
+        }
+      }
+    },
+    "socialAuthProfileRtn" : {
+      "type" : "object",
+      "properties" : {
+        "channelName" : {
+          "type" : "string",
+          "example" : "wechat",
+          "description" : "CEF supports wechat, qq and weibo"
+        },
+        "channelProperties" : {
+          "$ref" : "#/definitions/socialAuthProfileRtn_channelProperties"
+        }
+      }
+    },
+    "smsSignature" : {
+      "type" : "object",
+      "properties" : {
+        "signature" : {
+          "type" : "string",
+          "example" : "Disney(China)"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "Pending"
+        },
+        "stateMessage" : {
+          "type" : "string",
+          "example" : "",
+          "description" : "The reason why the approvement is failed. Only applicable when state is failed. Input by CEF operation."
+        }
+      },
+      "example" : {
+        "signature" : "Disney(China)",
+        "stateMessage" : "",
+        "state" : "Pending"
+      }
+    },
+    "smsTemplate" : {
+      "type" : "object",
+      "properties" : {
+        "templateName" : {
+          "type" : "string",
+          "example" : "Default_Promotion"
+        },
+        "signature" : {
+          "type" : "string",
+          "example" : "Disney(China)"
+        },
+        "tplType" : {
+          "type" : "integer",
+          "example" : 1,
+          "description" : "1: Triggered message, 2. OTP, 3. Campaign"
+        },
+        "message" : {
+          "type" : "string",
+          "example" : "'Hi ' + $(username) + ', you product ' + $(productname) +  ' is delivered'"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "Pending"
+        },
+        "stateMessage" : {
+          "type" : "string",
+          "example" : "",
+          "description" : "The reason why the approvement is failed. Only applicable when state is failed. Input by CEF operation."
+        }
+      },
+      "example" : {
+        "tplType" : 1,
+        "templateName" : "Default_Promotion",
+        "signature" : "Disney(China)",
+        "stateMessage" : "",
+        "state" : "Pending",
+        "message" : "'Hi ' + $(username) + ', you product ' + $(productname) +  ' is delivered'"
+      }
+    },
+    "smsMessage" : {
+      "type" : "object",
+      "properties" : {
+        "phoneNumber" : {
+          "type" : "array",
+          "description" : "Input one or a list of numbers. Maximum 500 numbers per batch.",
+          "items" : {
+            "type" : "string",
+            "example" : "18822298209"
+          }
+        },
+        "extend" : {
+          "type" : "string",
+          "example" : "01",
+          "description" : "Extended code for inbound message tracking. can be empty."
+        },
+        "messageBody" : {
+          "$ref" : "#/definitions/smsMessage_messageBody"
+        }
+      }
+    },
+    "inboundSMSMessage" : {
+      "type" : "object",
+      "properties" : {
+        "phoneNumber" : {
+          "type" : "string",
+          "example" : "1882990912"
+        },
+        "extend" : {
+          "type" : "string",
+          "example" : "01",
+          "description" : "Extended code used when sending sms."
+        },
+        "signature" : {
+          "type" : "string",
+          "example" : "Disney China",
+          "description" : "SMS signagure"
+        },
+        "message" : {
+          "type" : "string",
+          "example" : "TD"
+        },
+        "replyTime" : {
+          "type" : "string",
+          "example" : "2018-02-12T06:05:03.0127675Z"
+        }
+      },
+      "example" : {
+        "extend" : "01",
+        "replyTime" : "2018-02-12T06:05:03.0127675Z",
+        "phoneNumber" : "1882990912",
+        "signature" : "Disney China",
+        "message" : "TD"
+      }
+    },
+    "emailTemplate" : {
+      "type" : "object",
+      "properties" : {
+        "templateName" : {
+          "type" : "string",
+          "example" : "Default_Promotion"
+        },
+        "from_name" : {
+          "type" : "string",
+          "example" : "helpdesk@contoso.com"
+        },
+        "subject" : {
+          "type" : "string",
+          "example" : "Product Delivered"
+        },
+        "htmlMsg" : {
+          "type" : "string",
+          "example" : "'<html>Hi'+ $(username)+', you product'+ $(productname)+' is delivered</html>'"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "Pending"
+        }
+      }
+    },
+    "emailMessage" : {
+      "type" : "object",
+      "properties" : {
+        "eids" : {
+          "type" : "array",
+          "description" : "Input one eid or a list of eids.",
+          "items" : {
+            "type" : "string",
+            "example" : ""
+          }
+        },
+        "group" : {
+          "type" : "string",
+          "example" : "test1",
+          "description" : "Input one user group."
+        },
+        "messageBody" : {
+          "$ref" : "#/definitions/emailMessage_messageBody"
+        }
+      },
+      "description" : "If 'eids' is specified then the 'group'  must be null, and vice versa. If both 'eids' and 'group' parameters are not specified, then it pushes to all users."
+    },
+    "inline_response_200" : {
+      "properties" : {
+        "total" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "templates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/smsTemplate"
+          }
+        }
+      },
+      "example" : {
+        "total" : 1,
+        "templates" : [ {
+          "tplType" : 1,
+          "templateName" : "Default_Promotion",
+          "signature" : "Disney(China)",
+          "stateMessage" : "",
+          "state" : "Pending",
+          "message" : "'Hi ' + $(username) + ', you product ' + $(productname) +  ' is delivered'"
+        }, {
+          "tplType" : 1,
+          "templateName" : "Default_Promotion",
+          "signature" : "Disney(China)",
+          "stateMessage" : "",
+          "state" : "Pending",
+          "message" : "'Hi ' + $(username) + ', you product ' + $(productname) +  ' is delivered'"
+        } ]
+      }
+    },
+    "SMS template" : {
+      "type" : "object",
+      "properties" : {
+        "templateName" : {
+          "type" : "string",
+          "example" : "MySMSTemplate001",
+          "description" : "must be composed by letter, number and underline. Not more than 60 characters."
+        },
+        "signature" : {
+          "type" : "string",
+          "example" : "Disney(China)",
+          "description" : "Signature must be approved in advance."
+        },
+        "tplType" : {
+          "type" : "integer",
+          "example" : 1,
+          "description" : "1: Triggered message, 2. OTP, 3. Campaign"
+        },
+        "message" : {
+          "type" : "string",
+          "example" : "Hi $(username), you product $(productname) is delivered"
+        }
+      },
+      "example" : {
+        "tplType" : 1,
+        "templateName" : "MySMSTemplate001",
+        "signature" : "Disney(China)",
+        "message" : "Hi $(username), you product $(productname) is delivered"
+      }
+    },
+    "inline_response_200_1" : {
+      "properties" : {
+        "total" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "signatures" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/smsSignature"
+          }
+        }
+      },
+      "example" : {
+        "total" : 1,
+        "signatures" : [ {
+          "signature" : "Disney(China)",
+          "stateMessage" : "",
+          "state" : "Pending"
+        }, {
+          "signature" : "Disney(China)",
+          "stateMessage" : "",
+          "state" : "Pending"
+        } ]
+      }
+    },
+    "inline_response_200_2" : {
+      "properties" : {
+        "messageId" : {
+          "type" : "string",
+          "example" : "A341974A-30AD-4F78-B2CF-68A9A968AF69"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "SUCCESS",
+          "description" : "indicate the operation result."
+        },
+        "sendTime" : {
+          "type" : "string",
+          "example" : "2018-02-12T06:15:56.5718536Z"
+        }
+      },
+      "example" : {
+        "messageId" : "A341974A-30AD-4F78-B2CF-68A9A968AF69",
+        "state" : "SUCCESS",
+        "sendTime" : "2018-02-12T06:15:56.5718536Z"
+      }
+    },
+    "inline_response_200_3_details" : {
+      "properties" : {
+        "phoneNumber" : {
+          "type" : "string",
+          "example" : "1398898103"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "DELIVERED",
+          "description" : "the status of the message to the number."
+        },
+        "sendTime" : {
+          "type" : "string",
+          "example" : "2017-03-15 12:00:00"
+        },
+        "receiveTime" : {
+          "type" : "string",
+          "example" : "2017-03-15 12:00:10"
+        }
+      },
+      "example" : {
+        "receiveTime" : "2017-03-15 12:00:10",
+        "phoneNumber" : "1398898103",
+        "state" : "DELIVERED",
+        "sendTime" : "2017-03-15 12:00:00"
+      }
+    },
+    "inline_response_200_3" : {
+      "properties" : {
+        "messageId" : {
+          "type" : "string",
+          "example" : "A4C3A2D0-E66C-4F78-B2A7-2DB4FD47EAF4",
+          "description" : "the overall status of this sms sending operation"
+        },
+        "targets" : {
+          "type" : "integer",
+          "example" : 5
+        },
+        "delivered" : {
+          "type" : "integer",
+          "example" : 5
+        },
+        "failed" : {
+          "type" : "integer",
+          "example" : 0
+        },
+        "details" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/inline_response_200_3_details"
+          }
+        }
+      },
+      "example" : {
+        "messageId" : "A4C3A2D0-E66C-4F78-B2A7-2DB4FD47EAF4",
+        "delivered" : 5,
+        "details" : [ {
+          "receiveTime" : "2017-03-15 12:00:10",
+          "phoneNumber" : "1398898103",
+          "state" : "DELIVERED",
+          "sendTime" : "2017-03-15 12:00:00"
+        }, {
+          "receiveTime" : "2017-03-15 12:00:10",
+          "phoneNumber" : "1398898103",
+          "state" : "DELIVERED",
+          "sendTime" : "2017-03-15 12:00:00"
+        } ],
+        "failed" : 0,
+        "targets" : 5
+      }
+    },
+    "inline_response_201" : {
+      "properties" : {
+        "description" : {
+          "$ref" : "#/definitions/socialAuthProfileRtn"
+        },
+        "createTime" : {
+          "type" : "string",
+          "example" : "2018-02-12T06:05:03.0127675Z"
+        },
+        "modifiedTime" : {
+          "type" : "string",
+          "example" : "2018-02-12T06:05:03.0127675Z"
+        }
+      },
+      "example" : "{description={channelName=qq, channelProperties={id=4D9BDE681C3A8452FC65C4601F109706, socialProfile={nickname=Practicing, gender=男, province=北京, city=朝阳, year=2011}}, createdTime=2018-06-25T03:55:15.4974552Z, modifiedTime=2018-06-25T10:13:49.3421101Z}}"
+    },
+    "otpstartrequest" : {
+      "type" : "object",
+      "required" : [ "phoneNumber", "templateName" ],
+      "properties" : {
+        "phoneNumber" : {
+          "type" : "string",
+          "example" : "1892291902"
+        },
+        "templateName" : {
+          "type" : "string",
+          "example" : "OTPTemplate",
+          "description" : "The template must contain CEF-reserved param \"$otpcode\". e.g. \"【xxx】你的验证码是\" + $(otpcode) + \", 请在五分钟内输入。\""
+        },
+        "expireTime" : {
+          "type" : "integer",
+          "example" : 300,
+          "description" : "Seconds to expire. If users make another request within the xx minutes, they will receive the same token. If not specified the default value is 300."
+        },
+        "codeLength" : {
+          "type" : "integer",
+          "example" : 6,
+          "description" : "The length of the code min 4~ max 8. the default is 6."
+        },
+        "channel" : {
+          "type" : "string",
+          "example" : "sms",
+          "description" : "The channel (\"sms\", \"call\", \"email\") to send the code. The default is sms."
+        }
+      }
+    },
+    "inline_response_200_4" : {
+      "properties" : {
+        "expireTime" : {
+          "type" : "integer",
+          "example" : 300
+        }
+      },
+      "example" : {
+        "expireTime" : 300
+      }
+    },
+    "otpcheckrequest" : {
+      "type" : "object",
+      "properties" : {
+        "phoneNumber" : {
+          "type" : "string",
+          "example" : "1892291902"
+        },
+        "channel" : {
+          "type" : "string",
+          "example" : "sms"
+        },
+        "code" : {
+          "type" : "string",
+          "example" : "310928"
+        }
+      }
+    },
+    "inline_response_200_5" : {
+      "properties" : {
+        "state" : {
+          "type" : "string",
+          "example" : "SUCCESS"
+        }
+      },
+      "example" : {
+        "state" : "SUCCESS"
+      }
+    },
+    "socialAuthProfileReq_channelProperties" : {
+      "properties" : {
+        "accessToken" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "platform" : {
+          "type" : "string",
+          "example" : "ios"
+        }
+      }
+    },
+    "socialAuthProfileRtn_channelProperties" : {
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : ""
+        },
+        "socialProfile" : {
+          "type" : "object",
+          "properties" : { }
+        }
+      }
+    },
+    "smsMessage_messageBody_templateParam" : {
+      "properties" : {
+        "username" : {
+          "type" : "string",
+          "example" : "david_kool"
+        },
+        "productname" : {
+          "type" : "string",
+          "example" : "Surface Book"
+        }
+      },
+      "description" : "Parameter pairs to fill into the template."
+    },
+    "smsMessage_messageBody" : {
+      "properties" : {
+        "templateName" : {
+          "type" : "string",
+          "example" : "SMS_1001"
+        },
+        "templateParam" : {
+          "$ref" : "#/definitions/smsMessage_messageBody_templateParam"
+        }
+      }
+    },
+    "emailMessage_messageBody" : {
+      "properties" : {
+        "templateName" : {
+          "type" : "string",
+          "example" : "Default_Promotion"
+        },
+        "templateParam" : {
+          "$ref" : "#/definitions/smsMessage_messageBody_templateParam"
+        }
+      }
+    }
+  },
+  "parameters" : {
+    "apiversion" : {
+      "name" : "api-version",
+      "in" : "query",
+      "description" : "Version of API call.",
+      "required" : true,
+      "type" : "string",
+      "default" : "2018-10-01"
+    },
+    "tenant" : {
+      "name" : "Account",
+      "in" : "header",
+      "description" : "Tenant account in CEF.",
+      "required" : true,
+      "type" : "string",
+      "default" : "MockAccount"
+    },
+    "sastoken" : {
+      "name" : "Authorization",
+      "in" : "header",
+      "description" : "SASToken for authorization",
+      "required" : true,
+      "type" : "string"
+    },
+    "continuationtoken": {
+      "name": "continuationToken",
+      "in": "query",
+      "description": "The continuationToken query string parameter continues the enumeration.",
+      "required": false,
+      "type": "string"
+    },
+    "top" : {
+      "name" : "count",
+      "in" : "query",
+      "description" : "The $count query option specifies the maximum number of results per response. Default value is 100.",
+      "required" : false,
+      "type" : "integer"
+    }
+  },
+  "responses" : {
+    "204" : {
+      "description" : "No conent."
+    },
+    "400" : {
+      "description" : "Invalid request body. The registration could not be created because the request was malformed."
+    },
+    "401" : {
+      "description" : "Authorization failure. The access key was incorrect."
+    },
+    "403" : {
+      "description" : "Quota exceeded."
+    },
+    "404" : {
+      "description" : "Resource not found. customized message."
+    },
+    "409" : {
+      "description" : "Target not found. Customized message"
+    }
+  }
+}
